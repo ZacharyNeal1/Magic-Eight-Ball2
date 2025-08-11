@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Magic Eight Ball</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #answer {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Magic Eight Ball</h1>
+  <p>Ask a yes/no question and click the button.</p>
+  <button onclick="
+    const responses = [
+      'Yes — absolutely.',
+      'No — definitely not.',
+      'Maybe — unclear.',
+      'Ask again later.',
+      'Without a doubt.',
+      'Unlikely.',
+      'Signs point to yes.',
+      'Better not tell you now.'
+    ];
+    const out = document.getElementById('answer');
+    while (true) {
+      const q = prompt('Ask your yes/no question:');
+      if (q === null) { out.textContent = 'You ended the session.'; break; }
+      const pick = responses[Math.floor(Math.random() * responses.length)];
+      out.textContent = 'Q: ' + q + ' — A: ' + pick;
+      if (!confirm('Ask another question?')) { break; }
+    }
+  ">Shake the Ball</button>
+  <div id="answer">No answer yet.</div>
+</body>
+</html>
